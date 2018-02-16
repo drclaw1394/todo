@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#Wrapper to override task rc file forcing task list data to be located in the current directory.
+#Author:	Ruben Westerberg
+#Date:		Wed  3 May 2017 12:17:53 AEST
+
+dir=$(dirname $0)
+task rc.data.location=$dir/.task $@
