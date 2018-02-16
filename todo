@@ -4,5 +4,8 @@
 #Author:	Ruben Westerberg
 #Date:		Wed  3 May 2017 12:17:53 AEST
 
-dir=$(dirname $0)
+#Executing the todo scrpt in the local directory has the path we need
+dir=$(dirname $0)	
+
+#Pass the command line arguments to the actual taskwarrior process
 task rc.data.location=$dir/.task $@
