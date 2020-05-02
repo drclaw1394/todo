@@ -8,11 +8,17 @@
 #want the dir where the todo dir actually is cloned to!
 
 link=$(readlink $0);
-base=$(dirname $0);
-TODO=$base/$link;
+if [ $? -eq 0 ] ; then
+	base=$(dirname $0);
+
+	TODO=$base/$link;
+else
+	TODO=$0;
+fi
 
 #Executing the todo scrpt in the local directory has the path we need
 dir=$(dirname $TODO);
 
 #Pass the command line arguments to the actual taskwarrior process
-task rc.data.location=$dir $@
+#Use the task dir in the dir above the .todo
+task rc.data.location=$dir/../task $@
